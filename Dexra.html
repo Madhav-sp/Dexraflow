@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DexraFlow | The Rhythm of Innovation</title>
+    <link rel="icon" href="https://i.ibb.co/WN2dtMTC/logo.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --dark-color: #1a1a1a;
+            --light-color: #ffffff;
+            --grey-color: #f0f0f0;
+            --text-grey: #666;
+            --accent-color: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--light-color);
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2563eb;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: var(--text-grey);
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--grey-color);
+            transition: background 0.3s;
+        }
+
+        .main-header.scrolled {
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--dark-color);
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .main-nav a {
+            color: var(--dark-color);
+            margin-left: 1.5rem;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark-color);
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .main-nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: rgba(255, 255, 255, 0.95);
+                flex-direction: column;
+                align-items: center;
+                display: none;
+                padding: 1rem 0;
+                border-bottom: 1px solid var(--grey-color);
+            }
+
+            .main-nav.active {
+                display: flex;
+            }
+
+            .main-nav a {
+                margin: 1rem 0;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: linear-gradient(to bottom, #f9f9f9, #e0e7ff);
+            position: relative;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            font-size: 2rem;
+            color: var(--accent-color);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-15px);
+            }
+
+            60% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .two-col-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--light-color);
+            padding: 2rem;
+            border: 1px solid var(--grey-color);
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 4rem 2rem;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-left {
+            flex: 1 1 250px;
+        }
+
+        .footer-left .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+
+        .footer-left .footer-logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .footer-links {
+            flex: 2 1 500px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #3b82f6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .two-col-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* --- Product Showcase Section --- */
+#product-showcase {
+    background-color: #f9fafb; /* A very light grey background to separate the section */
+    padding: 6rem 0;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* The two-column grid layout */
+.product-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 4rem; /* Space between columns */
+    align-items: center;
+}
+
+.product-description h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+
+.product-description p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #4b5563; /* Softer text color for better readability */
+}
+
+/* Custom styled list for Core Capabilities */
+.capabilities-list {
+    list-style: none; /* Remove default bullets */
+    padding-left: 0;
+    margin-top: 2rem;
+}
+
+.capabilities-list li {
+    font-size: 1.05rem;
+    color: #374151;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Custom bullet icon before each list item */
+.capabilities-list li::before {
+    content: '\f058'; /* Font Awesome solid check-circle icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--accent-purple); /* Uses the purple color you already have */
+    margin-right: 0.75rem;
+    margin-top: 5px; /* Aligns icon with the text */
+}
+
+/* The card on the right that holds the images */
+.product-visuals {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+    text-align: center;
+}
+
+.product-visuals h3 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+/* The image gallery */
+.model-gallery {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+}
+
+.model-gallery img {
+    width: 48%; /* Make images fit side-by-side */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.model-gallery img:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Responsive adjustments for tablets and mobile */
+@media (max-width: 992px) {
+    .product-layout-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        gap: 3rem;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <a href="#" class="logo">DexraFlow</a>
+        <nav class="main-nav" id="navbar">
+            <a href="#home">Home</a>
+            <a href="#vision">Culture</a>
+            <a href="#working">Careers</a>
+            <a href="#performance">Investors</a>
+            <a href="#footer">Contact</a>
+        </nav>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hidden">
+                <h1>DexraFlow isn’t just a company<br>It’s the rhythm of innovation.</h1>
+            </div>
+            <a href="#weez-ai" class="scroll-down">
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <!-- Weez AI Section -->
+        <!-- <section id="weez-ai" class="container">
+            <div class="hidden">
+                <h2>Our Product</h2>
+                <p>Weez.AI is an AI-powered teammate for teams and agencies that transforms how they interact with their
+                    digital assets and workflows. It allows users to search, summarize, and ask questions about files,
+                    images, and videos across platforms, and automates content creation tasks such as generating RFPs,
+                    presentations, reports, social media creatives, and deep research insights.</p>
+                <p>By combining asset intelligence, AI-driven productivity, and creative augmentation, Weez.AI saves
+                    time, improves decision-making, and enables teams to focus on high-value work while the AI handles
+                    repetitive, research, and summarization tasks.</p>
+            </div>
+            <div class="section-grid hidden">
+                <div class="card">
+                    <h3>AI Chat for Assets</h3>
+                    <p>Search, summarize, and interact with your files, images, and videos.</p>
+                </div>
+                <div class="card">
+                    <h3>Automated Content Creation</h3>
+                    <p>Generate presentations, RFPs, reports, and social media creatives efficiently.</p>
+                </div>
+                <div class="card">
+                    <h3>Deep Research & Insights</h3>
+                    <p>Analyze markets, competitors, and content trends intelligently.</p>
+                </div>
+                <div class="card">
+                    <h3>Creative Mode</h3>
+                    <p>Strategize and plan campaigns or content with AI assistance.</p>
+                </div>
+            </div>
+            <div class="hidden" style="margin-top: 2rem; text-align: center;">
+                <a href="https://weez.online/" class="btn">Visit Product</a>
+            </div>
+        </section> -->
+
+        <main>
+            <section id="product-showcase">
+                <div class="container">
+                    <div class="product-layout-grid">
+        
+                        <div class="product-description hidden">
+                            <h2>Our Product: Weez.AI</h2>
+                            <p>Weez.AI is an AI-powered teammate that transforms how teams and agencies interact with their
+                                digital assets. It allows users to search, summarize, and ask questions about files, images, and
+                                videos across platforms.</p>
+                            <p>By combining asset intelligence with creative augmentation, Weez.AI saves time and enables teams
+                                to focus on high-value work while the AI handles repetitive tasks.</p>
+        
+                            <ul class="capabilities-list">
+                                <li><strong>AI Chat for Assets:</strong> Interact with your files, images, and videos.</li>
+                                <li><strong>Content Automation:</strong> Generate presentations, RFPs, and social media
+                                    creatives.</li>
+                                <li><strong>Deep Research:</strong> Analyze markets, competitors, and content trends
+                                    intelligently.</li>
+                                <li><strong>Creative Mode:</strong> Strategize and plan campaigns with AI assistance.</li>
+                            </ul>
+                        </div>
+        
+                        <div class="product-visuals hidden">
+                            <h3>Weez AI in Action</h3>
+                            <div class="model-gallery">
+                                <img src="https://i.ibb.co/nN1zg7xc/1.jpg" alt="Weez AI Model 1">
+                                <img src="https://i.ibb.co/JRJTR1DK/2.jpg" alt="Weez AI Model 2">
+                            </div>
+                            <a href="https://weez.online/" target="_blank" class="btn">Visit Product Website</a>
+                        </div>
+        
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Vision Section -->
+        <section id="vision" class="container">
+            <div class="two-col-layout">
+                <div class="hidden">
+                    <h2>Our Vision</h2>
+                    <p>To lead innovation across industries by empowering our brands to deliver products and services
+                        that make a real impact. DexraFlow is committed to creating value, driving growth, and fostering
+                        creativity.</p>
+                    <h2 style="margin-top: 2rem;">Our Mission</h2>
+                    <p>Investing in ideas, nurturing talent, and providing resources and technology to enable our brands
+                        to succeed. We build, acquire, and grow businesses that shape the future.</p>
+                </div>
+                <div class="hidden">
+                    <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800"
+                        alt="Abstract technology art">
+                </div>
+            </div>
+        </section>
+
+        <!-- Careers Section -->
+        <section id="working" class="container">
+            <div class="two-col-layout">
+                <div class="hidden">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800"
+                        alt="Team collaborating in a modern office">
+                </div>
+                <div class="hidden">
+                    <h2>Working at DexraFlow</h2>
+                    <p>Join a team where innovation meets impact. Be part of a company that empowers its brands and
+                        people to make a difference.</p>
+                    <a href="#" class="btn">Learn more & see our roles</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Section -->
+        <section id="performance" class="container">
+            <div class="hidden">
+                <h2>Our Performance</h2>
+                <p>DexraFlow is an early-stage startup, passionately building our products and preparing to secure
+                    funding to
+                    scale our innovations. We're focused on growth, user engagement, and creating impactful solutions.
+                </p>
+            </div>
+            <div class="section-grid">
+                <div class="card hidden">
+                    <h3>Startup Stage</h3>
+                    <p>Currently in the early stages of building our platform and shaping our product vision.</p>
+                </div>
+                <div class="card hidden">
+                    <h3>Funding Goals</h3>
+                    <p>Actively seeking investors and strategic partners to help accelerate growth and expand our reach.
+                    </p>
+                </div>
+                <div class="card hidden">
+                    <h3>Focus Areas</h3>
+                    <p>Product development, user experience, and creating a strong foundation for future success.</p>
+                </div>
+            </div>
+            <div class="hidden" style="margin-top: 2rem; text-align: center;">
+                <a href="#" class="btn">Explore More</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="main-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <a href="#" class="footer-logo">
+                    <img src="https://i.ibb.co/WN2dtMTC/logo.png" alt="DexraFlow Logo" />
+                    DexraFlow
+                </a>
+                <p>Building the rhythm of innovation. Join us as we shape the future with smart AI solutions.</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Our Products</h4>
+                    <ul>
+                        <li><a href="https://weez.online/"><i class="fa-solid fa-robot"></i> Weez AI</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-building"></i> Culture</a></li>
+                        <li><a href="#"><i class="fa-solid fa-user-tie"></i> Careers</a></li>
+                        <li><a href="#"><i class="fa-solid fa-hand-holding-dollar"></i> Investors</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Get in Touch</h4>
+                    <ul>
+                        <li><a href="mailto:support@dexraflow.com"><i class="fa-solid fa-envelope"></i>
+                                support@dexraflow.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DexraFlow. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animation observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+        document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
+
+        // Header scroll effect
+        const header = document.querySelector('.main-header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navbar = document.getElementById('navbar');
+        hamburger.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>
