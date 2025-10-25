@@ -22,7 +22,7 @@ export default function Navbar() {
   }, []);
 
   return (
-      <header className="sticky top-0 z-50 bg-black/90 text-[#EEE7D2] backdrop-blur ">
+      <header className="sticky top-0 z-50 bg-black/90 text-[#EEE7D2] backdrop-blur">
         <div className="container-x h-16 flex items-stretch justify-between">
           <a href="#" className="flex items-center">
             <ScrollFadeBrand
