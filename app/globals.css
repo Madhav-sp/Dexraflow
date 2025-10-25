@@ -1,0 +1,48 @@
+/* Tailwind directives — only once at the very top */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your global tokens */
+::selection { background: rgba(79,70,229,.2); }
+
+/* If you need simple brand utility fallbacks (optional but safe): */
+@layer utilities {
+  .bg-brand { background-color: theme('colors.brand.DEFAULT'); }
+  .text-brand { color: theme('colors.brand.DEFAULT'); }
+  .border-brand { border-color: theme('colors.brand.DEFAULT'); }
+}
+
+/* Your component helpers — must be inside a @layer block */
+@layer components {
+  .container-x {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-semibold transition active:scale-[.98];
+  }
+
+  /* Option A (safe): use theme() for bg so we don’t depend on @apply custom class */
+  .btn-primary {
+    @apply btn text-white hover:opacity-95;
+    background-color: theme('colors.brand.DEFAULT');
+  }
+
+  /* Option B (also fine now that brand is defined):
+     .btn-primary { @apply btn bg-brand text-white hover:opacity-95; } */
+
+  .btn-dark {
+    @apply btn text-white hover:opacity-90;
+    background-color: black;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent border border-slate-300 hover:bg-slate-100;
+  }
+
+  /* Section card */
+  .section-card {
+    @apply rounded-3xl bg-slate-50 p-6 sm:p-10 shadow-soft border border-slate-200;
+  }
+}

@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::selection { background: rgba(79, 70, 229, .2); }
+
+.container-x { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+.btn { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-semibold transition active:scale-95; }
+.btn-primary { @apply btn bg-brand text-white hover:opacity-95; }
+.btn-dark { @apply btn bg-black text-white hover:opacity-90; }
+.btn-ghost { @apply btn bg-transparent border border-slate-300 hover:bg-slate-100; }
+
+/* Section card: off-white with soft shadow */
+.section-card { @apply rounded-3xl bg-slate-50 p-6 sm:p-10 shadow-soft border border-slate-200; }
+
+/* Optional dark overlay token */
+.bg-slate-overlay {
+    --tw-bg-opacity: 0.6; /* set a default */
+    background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+}
+
+/* (Remove the stray text line at the end) */
