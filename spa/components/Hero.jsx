@@ -144,19 +144,19 @@ export default function GraffioHero({
                             exit="exit"
                             className="mt-6 max-w-xl text-[#EFE7D1]/80"
                         >
-                            <p>{data[idx].blurb}</p>
+                            {/* <p>{data[idx].blurb}</p> */}
                             <div className="mt-6 flex flex-wrap items-center gap-3">
 
                             </div>
                         </motion.div>
-                        <a href="#get-started"
+                        {/* <a href="#get-started"
                            className="rounded-full bg-[#EFE7D1] px-5 py-2.5 text-[#0B0B0B] font-semibold">
                             Get Started
                         </a>
                         <a href="#features"
                            className="rounded-full border border-[#EFE7D1]/30 px-5 py-2.5 text-[#EFE7D1] hover:bg-white/5">
                             Explore Features
-                        </a>
+                        </a> */}
                     </AnimatePresence>
                 </div>
             </div>
