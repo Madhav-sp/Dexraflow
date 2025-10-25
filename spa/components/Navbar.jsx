@@ -33,6 +33,7 @@ export default function Navbar() {
                 fadeDistance={260}
                 className="h-7"
             />
+
             <span className="sr-only">Dexraflow</span>
           </a>
 
