@@ -55,8 +55,8 @@ export default function WeezProductShowcase() {
                 {words[w]}
               </motion.span>
             </AnimatePresence>
-          </span>
-                    your work in seconds.
+          </span>{" "}
+                     your work in seconds.
                 </div>
 
                 <motion.p

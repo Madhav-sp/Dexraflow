@@ -36,9 +36,9 @@ const footerLinks = [
     label: "Social Links",
     links: [
       { title: "Facebook", href: "#", icon: Facebook },
-      { title: "Instagram", href: "#", icon: Instagram },
-      { title: "Youtube", href: "#", icon: Youtube },
-      { title: "LinkedIn", href: "#", icon: Linkedin },
+      { title: "Instagram", href: "https://www.instagram.com/dexraflow/", icon: Instagram },
+      { title: "Youtube", href: "https://www.youtube.com/@dexraofficial", icon: Youtube },
+      { title: "LinkedIn", href: "https://www.linkedin.com/company/dexraflow", icon: Linkedin },
     ],
   },
 ];
