@@ -1,12 +1,8 @@
 "use client";
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import App from "../spa/App";
+import dynamic from "next/dynamic";
+
+const SPA = dynamic(() => import("../spa/App.jsx"), { ssr: false });
 
 export default function SPAApp() {
-  return (
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  );
+    return <SPA />;
 }
