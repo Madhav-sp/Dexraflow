@@ -52,7 +52,8 @@ export default function Footer() {
         <div className="mx-auto grid w-full max-w-6xl gap-8 xl:grid-cols-3 xl:gap-10">
           <AnimatedContainer className="space-y-4">
             <div className="inline-flex items-center gap-2">
-              <FrameIcon className="h-7 w-7 text-[#EEE7D2]" />
+              {/*<FrameIcon className="h-7 w-7 text-[#EEE7D2]" />*/}
+              <img src={"/favicon.svg"} className="h-7 w-7 text-[#EEE7D2]"  alt={"Logo"}/>
               <span className="text-lg font-semibold tracking-wide">DEXRAFLOW</span>
             </div>
             <p className="mt-2 text-sm text-[#EEE7D2]/70">
