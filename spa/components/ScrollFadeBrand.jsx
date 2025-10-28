@@ -1,12 +1,6 @@
 import React, { useMemo, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-/**
- * Compact, navbar-friendly scroll-fading wordmark.
- * - Fades characters from right → left as the page scrolls.
- * - The character at `anchorIndex` never fades (defaults to 0 = first char).
- * - Hover: subtle lift + accent color per letter.
- */
 export default function ScrollFadeBrand({
                                             text = "DEXRAFLOW",
                                             anchorIndex = 0,          // which character never fades
