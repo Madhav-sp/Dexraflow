@@ -3,12 +3,6 @@ import React from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import { Sparkles, MessageSquare, Search, Workflow, ShieldCheck, Rocket, BookOpenText, Timer, FolderSearch, ArrowRight } from "lucide-react";
 
-/**
- * WeezProductShowcase.jsx
- * Highly-animated product section for Weez AI
- * Theme: black background + #EEE7D2 text
- * Pure JSX, Tailwind + framer-motion + lucide-react only
- */
 export default function WeezProductShowcase() {
     const words = ["Search", "Automate", "Summarize"];
     const [w, setW] = React.useState(0);
@@ -165,7 +159,6 @@ export default function WeezProductShowcase() {
     );
 }
 
-/* -------------------- Subcomponents -------------------- */
 function TabPill({ active, onClick, icon: Icon, children }) {
     return (
         <button

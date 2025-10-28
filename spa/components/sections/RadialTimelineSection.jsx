@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { Brain, CalendarDays, Cog, Rocket, Sparkles, Workflow } from "lucide-react";
-// IMPORTANT: RELATIVE import so it works regardless of your @ alias
 import RadialOrbitalTimeline from "../RadialOrbitalTimeline";
 
 export default function RadialTimelineSection() {

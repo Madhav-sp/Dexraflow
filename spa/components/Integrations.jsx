@@ -1,12 +1,10 @@
 "use client";
 import React from "react";
 
-// tiny cn helper so we don't depend on "@/lib/utils"
 function cn(...classes) {
     return classes.filter(Boolean).join(" ");
 }
 
-// === FeatureCard (pure JSX) ===
 function FeatureCard({ feature, className = "", ...props }) {
     const p = genRandomPattern();
     const Icon = feature.icon;
@@ -18,7 +16,6 @@ function FeatureCard({ feature, className = "", ...props }) {
             )}
             {...props}
         >
-            {/* subtle grid glow */}
             <div className="pointer-events-none absolute top-0 left-1/2 -mt-2 -ml-20 h-full w-full [mask-image:linear-gradient(white,transparent)]">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#EEE7D2]/5 to-transparent [mask-image:radial-gradient(farthest-side_at_top,white,transparent)] opacity-100">
                     <GridPattern
@@ -71,7 +68,6 @@ function genRandomPattern(length) {
     ]);
 }
 
-// === Integrations (drop-in replacement) ===
 export default function Integrations() {
     const features = [
         {

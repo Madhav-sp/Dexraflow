@@ -3,11 +3,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 
-/**
- * ShowcaseSection.jsx
- * A video-inspired, eye-catching section matching Dexraflow's theme (bg black, text #EEE7D2).
- * Includes animated heading, subtle parallax glows, feature chips, and CTA buttons with magnetic hover.
- */
 export default function ShowcaseSection() {
     return (
         <section className="relative isolate overflow-hidden bg-black text-[#EEE7D2]">

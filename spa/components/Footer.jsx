@@ -3,8 +3,6 @@ import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Facebook, Instagram, Linkedin, Youtube, Square as FrameIcon } from "lucide-react";
 
-// Dexraflow footer — JSX only, dark theme (bg-black, text #EEE7D2)
-// Drop this at: components/Footer.jsx
 
 const footerLinks = [
   {
